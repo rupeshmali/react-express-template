@@ -1,19 +1,31 @@
 const User = require("../models/user");
 
 exports.getUsers = async (req, res) => {
-  const users = await User.find();
-  return res.json({
-    users,
-  });
+  try {
+    const users = await User.find();
+    return res.json({
+      users,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: error.message,
+      success: false,
+    });
+  }
 };
 
-exports.getUser = (req, res) => {
-  // fetch user with id
-  const id = req.params.id;
-  // Implement logic to fetch all users and send them in the response
-  res.json({
-    user: USERS.find((user) => user.id === +id),
-  }); // replace with actual user data
+exports.getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    return res.json({
+      user,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: error.message,
+      success: false,
+    });
+  }
 };
 
 exports.createUser = async (req, res) => {
