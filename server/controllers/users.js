@@ -1,25 +1,5 @@
 const User = require("../models/user");
 
-let USERS = [
-  {
-    id: 1,
-    name: "user 1",
-    completed: false,
-    description: "This is user 1",
-  },
-  {
-    id: 2,
-    name: "user 2",
-    completed: true,
-    description: "This is user 2",
-  },
-  {
-    id: 3,
-    name: "user 3",
-    completed: false,
-    description: "This is user 3",
-  },
-];
 exports.getUsers = async (req, res) => {
   const users = await User.find();
   return res.json({
