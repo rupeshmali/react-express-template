@@ -114,3 +114,31 @@ exports.deleteUser = async (req, res) => {
     });
   }
 };
+
+exports.login = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    if (!email || !password) {
+      throw new Error("Email and password are required.");
+    }
+    const user = await User.findOne({
+      email,
+      password,
+    });
+    if (!user) {
+      throw new Error("Invalid credentials.");
+    }
+    return res.json({
+      success: true,
+      user: {
+        name: user.name,
+        email: user.email,
+      },
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: error.message,
+      success: false,
+    });
+  }
+};
