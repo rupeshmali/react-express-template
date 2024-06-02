@@ -23,6 +23,10 @@ mongoose.connect(process.env.DB_URL).then(()=>{
 const userRouter = require('./routes/users'); // Replace with your actual user router path
 app.use('/users', userRouter);
 
+// Use a router for auth endpoints
+const authRouter = require('./routes/auth'); 
+app.use('/auth', authRouter);
+
 // Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server listening on port ${port}`));
