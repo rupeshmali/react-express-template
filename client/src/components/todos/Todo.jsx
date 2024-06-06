@@ -2,6 +2,10 @@ import { TbTrash } from 'react-icons/tb';
 import { deleteTodo, updateTodo } from "../../api/todos"
 
 const Todo = ({ id, name, completed, description }) => {
+    const handleDelete = (e) =>{
+        e.stopPropagation()
+        deleteTodo(id)
+    }
     return (
         <div
             className={
@@ -21,7 +25,7 @@ const Todo = ({ id, name, completed, description }) => {
                 absolute h-6 w-6 flex items-center justify-center rounded 
                 top-3 right-3 cursor-pointer hover:bg-red-100
                 "
-                onClick={() => deleteTodo(id)}
+                onClick={handleDelete} 
             >
                 <TbTrash className='text-red-500' />
             </div>

@@ -1,6 +1,5 @@
 import Todos from "../components/todos/Todos"
 
-
 const Home = () => {
     return (
         <div className="p-5">

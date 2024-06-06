@@ -4,16 +4,28 @@ import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Navbar from "./components/common/Navbar"
+import { AuthProvider } from "./contexts/auth"
+import AuthLayout from "./components/auth/AuthLayout"
+import Layout from "./components/protected/Layout"
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path={PATHS.HOME} element={<Home />} />
-        <Route path={PATHS.LOGIN} element={<Login />} />
-        <Route path={PATHS.HOME} element={<Register />} />
-      </Routes>
+      <AuthProvider>
+        <div className="flex flex-col">
+          <Navbar />
+          <Routes>
+
+            <Route path={PATHS.HOME} element={<Layout />} >
+              <Route index element={<Home />} />
+            </Route>
+            <Route path={PATHS.REGISTER} element={<AuthLayout />}>
+              <Route path={PATHS.LOGIN} element={<Login />} />
+              <Route index element={<Register />} />
+            </Route>
+          </Routes>
+        </div>
+      </AuthProvider>
     </BrowserRouter>
   )
 }

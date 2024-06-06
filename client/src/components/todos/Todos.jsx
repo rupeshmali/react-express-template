@@ -6,19 +6,19 @@ import Todo from "./Todo";
 const Todos = () => {
     const [todos, setTodos] = useState([]);
     useEffect(() => {
-        getTodos().then(({ data }) => {
+       getTodos().then(({ data }) => {
             setTodos(data.todos);
         }).catch(err => {
             console.log(err);
-        })
+        }) 
     }, []);
 
     return (
         <div className="grid sm:grid-cols-3 grid-cols-1 gap-2">
             {todos.map(todo => (
-                <Todo key={todo.id} {...todo} />
+                <Todo key={todo._id} {...todo} id={todo._id} />
             ))}
         </div>
-    )
+    )   
 }
 export default Todos

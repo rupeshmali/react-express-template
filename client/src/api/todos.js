@@ -1,10 +1,9 @@
-import axios from 'axios';
-import { SERVER_URL } from '../utils/constants';
+import { apiClient } from '.';
 
-const prefix = 'todos';
+const prefix = '/todos';
 
-export const getTodos = async () => axios.get(`${SERVER_URL}/${prefix}`)
+export const getTodos = async () => apiClient().get(prefix)
 
-export const updateTodo = async (id, data) => axios.put(`${SERVER_URL}/${prefix}/${id}`, data);
+export const updateTodo = async (id, data) => apiClient().put(`${prefix}/${id}`, data);
 
-export const deleteTodo = async (id) => axios.delete(`${SERVER_URL}/${prefix}/${id}`);
+export const deleteTodo = async (id) => apiClient().delete(`${prefix}/${id}`);

@@ -1,7 +1,9 @@
 export const PATHS = {
-    HOME: '/',
-    LOGIN: '/login',
-    REGISTER: '/register'
+    HOME: '/app',
+    LOGIN: '/auth/login',
+    REGISTER: '/auth'
 }
 
 export const SERVER_URL = 'http://localhost:3000'
+
+export const TOKEN_KEY = 'access_token'

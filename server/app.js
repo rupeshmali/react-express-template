@@ -19,13 +19,18 @@ mongoose.connect(process.env.DB_URL).then(()=>{
     console.log(error.message);
 })
 
+const { verifyUser } = require('./middlewares/auth');
+
 // Use a router for user endpoints
 const userRouter = require('./routes/users'); // Replace with your actual user router path
-app.use('/users', userRouter);
+app.use('/users', verifyUser, userRouter);
 
 // Use a router for auth endpoints
 const authRouter = require('./routes/auth'); 
 app.use('/auth', authRouter);
+
+const todoRouter = require('./routes/todos'); // Replace with your actual user router path
+app.use('/todos', verifyUser, todoRouter);
 
 // Start the server
 const port = process.env.PORT || 3000;

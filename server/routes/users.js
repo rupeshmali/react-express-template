@@ -5,7 +5,7 @@ const router = express.Router();
 
 // Get all Users
 router.get('/', getUsers);
-router.get('/:id', getUser);
+router.get('/me', getUser);
 
 // Update a User
 router.put('/:id', updateUser);
