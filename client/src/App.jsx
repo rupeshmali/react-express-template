@@ -7,6 +7,7 @@ import Navbar from "./components/common/Navbar"
 import { AuthProvider } from "./contexts/auth"
 import AuthLayout from "./components/auth/AuthLayout"
 import Layout from "./components/protected/Layout"
+import Landing from "./pages/Landing"
 
 const App = () => {
   return (
@@ -15,7 +16,7 @@ const App = () => {
         <div className="flex flex-col">
           <Navbar />
           <Routes>
-
+            <Route path={PATHS.LANDING} element={<Landing />} />
             <Route path={PATHS.HOME} element={<Layout />} >
               <Route index element={<Home />} />
             </Route>

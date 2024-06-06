@@ -1,4 +1,5 @@
 export const PATHS = {
+    LANDING: '/',
     HOME: '/app',
     LOGIN: '/auth/login',
     REGISTER: '/auth'

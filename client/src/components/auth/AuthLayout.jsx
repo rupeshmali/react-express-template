@@ -1,7 +1,11 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Navigate, Outlet } from 'react-router-dom'
+import { AuthContext } from '../../contexts/auth'
+import { PATHS } from '../../utils/constants'
 
 const AuthLayout = () => {
+    const { currentUser } = useContext(AuthContext)
+    if(currentUser) return <Navigate to={PATHS.HOME} />
     return (
             <div className="grid grid-cols-3 gap-5 auth-container">
                 <div className="col-span-2">

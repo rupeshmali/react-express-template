@@ -57,9 +57,8 @@ export const AuthProvider = ({ children }) => {
             setLocalStorage(TOKEN_KEY, data.token)
             setCurrentUser(data.user)
             handleToast(data.message)
-            setTimeout(() => {
-                navigate(PATHS.HOME)
-            }, 1000)    
+            window.location.href = window.location.origin + PATHS.HOME;
+
         } catch (error) {
             let message = 'Something went wrong'
             if (isAxiosError(error)) {
