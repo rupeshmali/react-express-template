@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
             setCurrentUser(data.user)
             handleToast(data.message)
             window.location.href = window.location.origin + PATHS.HOME;
-
+            
         } catch (error) {
             let message = 'Something went wrong'
             if (isAxiosError(error)) {
